@@ -12,23 +12,20 @@
 
 <script>
 export default {
-  name: 'KButton',
+  name: 'k-button',
 
   data() {
     return {
       themes: {
-        default: '',
         primary: 'btn-primary',
-        secondary: 'btn-secondary',
-        info: 'btn-info',
-        warn: 'btn-warn',
-        danger: 'btn-danger'
+        secondary: 'btn-secondary'
       },
 
       sizes: {
-        normal: '',
-        small: 'btn-sm',
-        large: 'btn-lg'
+        sm: 'btn-sm',
+        md: 'btn-md',
+        lg: 'btn-lg',
+        xl: 'btn-xl'
       }
     };
   },
@@ -63,12 +60,12 @@ export default {
 
 <style lang="postcss">
 .btn {
-  @apply font-bold py-2 px-4 rounded;
+  @apply uppercase py-4 px-16 shadow-inner;
 }
 .btn-primary {
-  @apply bg-red-500 text-white;
+  @apply bg-blue-600 text-white border-blue-600 border-2 border-solid;
 }
 .btn-primary:hover {
-  @apply bg-red-700;
+  @apply text-blue-600 bg-white;
 }
 </style>
