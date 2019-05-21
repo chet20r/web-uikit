@@ -1,10 +1,14 @@
+const { fontFaceDeclarations, fontFamily } = require('./src/assets/styles');
+
 module.exports = {
   theme: {
-    fontFamily: {
-      anko: 'AnkoRegular',
-      'anko-bold': 'AnkoBold'
-    }
+    fontFamily,
+    extend: {}
   },
   variants: {},
-  plugins: []
+  plugins: [
+    function({ addBase }) {
+      addBase(fontFaceDeclarations);
+    }
+  ]
 };
