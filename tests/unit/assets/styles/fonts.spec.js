@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import { fontFaceDeclarations, fontFamily } from '@/assets/styles/fonts';
+import { fontFaceDeclarations, fontFamily } from '@/assets/tw-plugins/base/fonts';
 import expectedFontFaces from './fonts.fixture';
 
 jest.mock('fs');
@@ -39,7 +39,6 @@ describe('Font Face & Font Family Generator', () => {
 
     it('should skip files with unknown file types', () => {
       const fileNames = ['a', 'b'];
-      path.join.mockReturnValue('/assets/fonts');
       fs.readdirSync.mockReturnValue(fileNames);
 
       const fontFaces = fontFaceDeclarations();
@@ -50,7 +49,6 @@ describe('Font Face & Font Family Generator', () => {
   describe('Font Family', () => {
     it('should generate font family mapping', () => {
       const fileNames = ['AnkoModerat-Bold.otf', 'AnkoModerat-Bold.woff', 'AnkoModerat-Icon.eot'];
-      path.join.mockReturnValue('/assets/fonts');
       fs.readdirSync.mockReturnValue(fileNames);
       const family = fontFamily();
       expect(family).toEqual({ 'anko-bold': 'AnkoBold', 'anko-icon': 'AnkoIcon' });

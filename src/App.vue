@@ -1,9 +1,14 @@
 <template>
   <div id="app" class="font-anko-bold">
-    <img class="mx-auto" alt="Vue logo" src="@/assets/images/logo.png">
+    <img class="mx-auto mx-4 my-4" alt="Vue logo" src="@/assets/images/logo.png">
+
     <k-button
-      :styles="['bg-red-700', 'text-white', 'px-5', 'py-5', 'my-10' ,'uppercase', 'rounded']"
-    >Add To Cart</k-button>
+      name="Add To Cart"
+      theme="btn-secondary-inverted"
+      v-bind="$attrs"
+      v-on="$listeners"
+    >Send Us Your Question</k-button>
+
     <h1 class="font-anko-regular text-6xl">asdf</h1>
     <h1 class="font-anko-bold">asdf</h1>
     <h1 class="font-anko-italic">asdf</h1>
@@ -24,10 +29,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="postcss">
 #app {
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  @apply my-10 text-center;
 }
 </style>
