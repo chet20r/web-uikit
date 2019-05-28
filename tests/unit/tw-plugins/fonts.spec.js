@@ -1,15 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 
-import { fontFaceDeclarations, fontFamily } from '@/assets/tw-plugins/base/fonts';
+import { fontFaceDeclarations, fontFamily } from '@/tw-plugins/fonts';
 import expectedFontFaces from './fonts.fixture';
 
 jest.mock('fs');
 jest.mock('path');
 
 describe('Font Face & Font Family Generator', () => {
-  beforeAll(() => {});
-
   describe('Font Face', () => {
     beforeAll(() => {
       const fileNames = [

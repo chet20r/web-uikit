@@ -1,10 +1,12 @@
-const { fontFaceDeclarations, fontFamily } = require('./src/assets/tw-plugins/base');
-
+const {
+  plugins: [base],
+  fontFamily
+} = require('./src/tw-plugins');
 module.exports = {
   theme: {
     colors: {
       orange: {
-        default: '#D86018',
+        default: '#B33D26',
         100: '#FFCD00',
         200: '#DE7C00',
         300: '#D86018',
@@ -66,18 +68,14 @@ module.exports = {
         300: '#776E64',
         400: '#453536'
       },
-      white: {
-        default: '#FFF'
-      }
+      white: '#FFF',
+      black: '#222',
+      transparent: 'transparent'
     },
     fontFamily,
     extend: {},
     variants: {}
   },
 
-  plugins: [
-    function({ addBase }) {
-      addBase(fontFaceDeclarations);
-    }
-  ]
+  plugins: [base]
 };

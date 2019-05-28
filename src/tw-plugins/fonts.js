@@ -8,7 +8,8 @@ const fontExtensionToFormatMap = {
   ttf: 'truetype',
   eot: ''
 };
-const fileNames = () => fs.readdirSync(path.join(__dirname, '/../../fonts'));
+
+const fileNames = () => fs.readdirSync(path.join(__dirname, '/../assets/fonts'));
 
 /**
  * A array reducer that returns an object with key as the filename (without extension)

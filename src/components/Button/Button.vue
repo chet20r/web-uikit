@@ -2,8 +2,8 @@
   <button
     :name="name"
     :aria-label="a11yLabel"
-    class="btn empty before:empty after:empty"
-    :class="[theme, ...styleOverride]"
+    class="btn"
+    :class="[theme, ...styles]"
     :type="type"
     :disabled="disabled"
     @click="$emit('click', $event)"
@@ -15,8 +15,10 @@
 </template>
 
 <script>
+import propMixins from '@/components/mixins/props';
 export default {
-  name: 'k-button',
+  name: 'Button',
+  mixins: [propMixins],
   data() {
     return {};
   },
@@ -25,7 +27,7 @@ export default {
       required: false,
       type: String,
       default: 'button',
-      validator: type => ['button', 'submit', 'reset'].indexOf(type) !== -1
+      validator: type => type.match(/(button|submit|reset)/)
     },
     name: {
       required: false,
@@ -47,17 +49,9 @@ export default {
       type: String,
       default: 'btn-primary',
       validator: theme =>
-        [
-          'btn-primary',
-          'btn-secondary',
-          'btn-primary-inverted',
-          'btn-secondary-inverted'
-        ].indexOf(theme) !== -1
-    },
-    styleOverride: {
-      required: false,
-      type: Array,
-      default: () => []
+        theme.match(
+          /(btn-primary|btn-secondary|btn-primary-inverted|btn-secondary-inverted)/
+        )
     }
   }
 };

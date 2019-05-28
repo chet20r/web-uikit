@@ -1,30 +1,34 @@
 <template>
-  <div id="app" class="font-anko-bold">
+  <div id="app" class="font-anko-regular">
     <img class="mx-auto mx-4 my-4" alt="Vue logo" src="@/assets/images/logo.png">
 
-    <k-button
+    <Button
       name="Add To Cart"
       theme="btn-secondary-inverted"
       v-bind="$attrs"
       v-on="$listeners"
-    >Send Us Your Question</k-button>
+    >Send Us Your Question</Button>
 
-    <h1 class="font-anko-regular text-6xl">asdf</h1>
-    <h1 class="font-anko-bold">asdf</h1>
-    <h1 class="font-anko-italic">asdf</h1>
-    <h1 class="font-anko-condensed-regular">asdf</h1>
-    <h1>asdf</h1>
+    <Header level="h1">Heading Level 1</Header>
+    <Header level="h2">Heading Level 2</Header>
+    <Header level="h3">Heading Level 3</Header>
+    <Header level="h4">Heading Level 4</Header>
+    <Header level="h5">Heading Level 5</Header>
+    <Header level="h6">Heading Level 6</Header>
   </div>
 </template>
 
 <script>
-import KButton from './components/KButton';
+import Button from './components/Button';
+import Header from './components/Header';
+
 import './main.css';
 
 export default {
   name: 'App',
   components: {
-    KButton
+    Button,
+    Header
   }
 };
 </script>
