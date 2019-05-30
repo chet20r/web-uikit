@@ -1,17 +1,17 @@
 <template>
-  <button
-    :name="name"
+  <component
+    :is="tag"
     :aria-label="a11yLabel"
     class="btn"
-    :class="[theme, ...styles]"
+    :class="[theme, { inverted, rounded, disabled }, ...styles]"
     :type="type"
-    :disabled="disabled"
+    v-bind="$attrs"
     @click="$emit('click', $event)"
   >
     <slot name="left"></slot>
     <slot></slot>
     <slot name="right"></slot>
-  </button>
+  </component>
 </template>
 
 <script>
@@ -23,6 +23,12 @@ export default {
     return {};
   },
   props: {
+    tag: {
+      required: true,
+      type: String,
+      default: 'button',
+      validator: tag => tag.match(/(button|a)/)
+    },
     type: {
       required: false,
       type: String,
@@ -47,11 +53,18 @@ export default {
     theme: {
       required: false,
       type: String,
-      default: 'btn-primary',
-      validator: theme =>
-        theme.match(
-          /(btn-primary|btn-secondary|btn-primary-inverted|btn-secondary-inverted)/
-        )
+      default: 'primary',
+      validator: theme => theme.match(/(primary|secondary)/)
+    },
+    rounded: {
+      required: false,
+      type: Boolean,
+      default: false
+    },
+    inverted: {
+      required: false,
+      type: Boolean,
+      default: false
     }
   }
 };
@@ -59,42 +72,43 @@ export default {
 
 <style lang="postcss">
 .btn {
-  @apply px-4 py-4 border-2 border-solid rounded uppercase font-anko-bold text-base shadow;
-}
+  @apply px-2 py-2 
+    border-2 border-solid 
+    rounded uppercase font-anko-bold text-base 
+    shadow;
 
-.btn-primary {
-  @apply border-blue bg-blue text-white;
-}
+  &:focus {
+    @apply outline-none shadow-outline;
+  }
 
-.btn-primary:hover {
-  @apply bg-white text-blue;
-}
+  &.rounded {
+    @apply px-4 rounded-full;
+  }
 
-.btn-secondary {
-  @apply border-orange bg-orange text-white;
-}
+  &.primary {
+    @apply border-blue bg-blue text-white;
+    &:hover {
+      @apply bg-white text-blue;
+    }
+    &.inverted {
+      @apply text-blue bg-white;
+      &:hover {
+        @apply bg-blue text-white;
+      }
+    }
+  }
 
-.btn-secondary:hover {
-  @apply bg-white text-orange;
-}
-
-.btn-secondary:focus {
-  @apply border-orange;
-}
-
-.btn-primary-inverted {
-  @apply border-blue text-blue;
-}
-
-.btn-primary-inverted:hover {
-  @apply bg-blue text-white;
-}
-
-.btn-secondary-inverted {
-  @apply border-orange text-orange;
-}
-
-.btn-secondary-inverted:hover {
-  @apply bg-orange text-white;
+  &.secondary {
+    @apply border-orange bg-orange text-white;
+    &:hover {
+      @apply bg-white text-orange;
+    }
+    &.inverted {
+      @apply text-orange bg-white;
+      &:hover {
+        @apply bg-orange text-white;
+      }
+    }
+  }
 }
 </style>

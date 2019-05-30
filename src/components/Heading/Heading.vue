@@ -1,6 +1,6 @@
 <template>
   <component :is="level" class="heading" :class="styles">
-    <slot/>
+    <slot></slot>
   </component>
 </template>
 

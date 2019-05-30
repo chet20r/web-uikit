@@ -1,7 +1,12 @@
 module.exports = {
   plugins: [
     require('postcss-import'),
-    require('postcss-preset-env'),
+    require('postcss-preset-env')({
+      stage: 3,
+      features: {
+        'nesting-rules': true
+      }
+    }),
     require('tailwindcss')('./tailwind.config.js'),
     require('autoprefixer'),
     ...(process.env.NODE_ENV === 'production'

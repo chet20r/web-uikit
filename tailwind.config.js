@@ -76,6 +76,8 @@ module.exports = {
     extend: {},
     variants: {}
   },
-
+  corePlugins: {
+    appearance: false
+  },
   plugins: [base]
 };
