@@ -27,12 +27,24 @@ describe('Base Styles Tailwind Plugin', () => {
     addBase = jest.fn();
     theme = jest.fn();
     fontFaceDeclarations.mockReturnValue(fontFace);
+    theme.mockReturnValue({ 'font-size': '2rem' });
+    base({ addBase, theme });
   });
 
   it('should register base styles', () => {
-    theme.mockReturnValue({ 'font-size': '2rem' });
-    base({ addBase, theme });
-    expect(theme).toBeCalledTimes(6);
     expect(addBase).toBeCalledWith(Object.assign({}, expectedHeaders, fontFace));
+  });
+
+  it('should call theme with fontsize parameters', () => {
+    const expectedArguments = [
+      'fontSize.5xl',
+      'fontSize.4xl',
+      'fontSize.3xl',
+      'fontSize.6xl',
+      'fontSize.2xl',
+      'fontSize.xl'
+    ];
+    expect(theme).toBeCalledTimes(6);
+    expectedArguments.forEach(e => expect(theme).toBeCalledWith(e));
   });
 });

@@ -1,9 +1,8 @@
 <template>
   <component
     :is="tag"
-    :aria-label="a11yLabel"
     class="btn"
-    :class="[theme, { inverted, rounded, disabled }, ...styles]"
+    :class="[theme, { inverted, rounded, disabled, fullwidth }, size, ...styles]"
     :type="type"
     v-bind="$attrs"
     @click="$emit('click', $event)"
@@ -24,7 +23,7 @@ export default {
   },
   props: {
     tag: {
-      required: true,
+      required: false,
       type: String,
       default: 'button',
       validator: tag => tag.match(/(button|a)/)
@@ -34,16 +33,6 @@ export default {
       type: String,
       default: 'button',
       validator: type => type.match(/(button|submit|reset)/)
-    },
-    name: {
-      required: false,
-      type: String,
-      default: ''
-    },
-    a11yLabel: {
-      required: false,
-      type: String,
-      default: ''
     },
     disabled: {
       required: false,
@@ -65,6 +54,17 @@ export default {
       required: false,
       type: Boolean,
       default: false
+    },
+    fullwidth: {
+      required: false,
+      type: Boolean,
+      default: false
+    },
+    size: {
+      required: false,
+      type: String,
+      default: 'md',
+      validator: size => size.match(/(sm|md|lg|xl)/)
     }
   }
 };
@@ -72,10 +72,27 @@ export default {
 
 <style lang="postcss">
 .btn {
-  @apply px-2 py-2 
+  @apply px-2 py-2 w-48
     border-2 border-solid 
-    rounded uppercase font-anko-bold text-base 
-    shadow;
+    uppercase font-anko-bold text-base 
+    rounded shadow;
+
+  &.sm {
+    @apply text-sm px-4 py-1;
+  }
+  &.md {
+    @apply text-base;
+  }
+  &.lg {
+    @apply text-lg;
+  }
+  &.xl {
+    @apply text-xl;
+  }
+
+  &.fullwidth {
+    @apply w-full;
+  }
 
   &:focus {
     @apply outline-none shadow-outline;

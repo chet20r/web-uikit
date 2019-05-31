@@ -1,9 +1,7 @@
 <template>
   <div id="app" class="font-anko-regular">
     <img class="mx-auto mx-4 my-4" alt="Vue logo" src="@/assets/images/logo.png">
-
-    <Button tag="a" theme="primary" v-on="$listeners">Send Us Your Question</Button>
-
+    <Button v-on="$listeners">Add To Bag</Button>
     <Heading level="h1">Heading Level 1</Heading>
     <Heading level="h2">Heading Level 2</Heading>
     <Heading level="h3">Heading Level 3</Heading>
