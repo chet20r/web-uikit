@@ -10,9 +10,6 @@ import propMixins from '@/components/mixins/props';
 export default {
   name: 'Heading',
   mixins: [propMixins],
-  data() {
-    return {};
-  },
   props: {
     level: {
       type: String,

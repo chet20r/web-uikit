@@ -1,9 +1,9 @@
-import { shallowMount, mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import Button from './Button';
 
 describe('Button', () => {
   let wrapper;
-  beforeAll(() => {});
+  beforeEach(() => {});
 
   it('is a Vue instance', () => {
     wrapper = shallowMount(Button);
@@ -56,11 +56,11 @@ describe('Button', () => {
     wrapper = shallowMount(Button, {
       propsData: {
         rounded: true,
-        inverted: true,
+        outline: true,
         fullwidth: true
       }
     });
-    expect(wrapper.classes()).toContain('rounded', 'inverted', 'fullwidth');
+    expect(wrapper.classes()).toEqual(expect.arrayContaining(['rounded', 'outline', 'fullwidth']));
   });
 
   it('should have class md as default size', () => {

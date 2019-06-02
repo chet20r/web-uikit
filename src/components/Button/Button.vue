@@ -2,7 +2,7 @@
   <component
     :is="tag"
     class="btn"
-    :class="[theme, { inverted, rounded, disabled, fullwidth }, size, ...styles]"
+    :class="[theme, { outline, rounded, disabled, fullwidth }, size, ...styles]"
     :type="type"
     v-bind="$attrs"
     @click="$emit('click', $event)"
@@ -18,9 +18,6 @@ import propMixins from '@/components/mixins/props';
 export default {
   name: 'Button',
   mixins: [propMixins],
-  data() {
-    return {};
-  },
   props: {
     tag: {
       required: false,
@@ -50,7 +47,7 @@ export default {
       type: Boolean,
       default: false
     },
-    inverted: {
+    outline: {
       required: false,
       type: Boolean,
       default: false
@@ -72,9 +69,9 @@ export default {
 
 <style lang="postcss">
 .btn {
-  @apply px-2 py-2 w-48
+  @apply px-2 py-2
     border-2 border-solid 
-    uppercase font-anko-bold text-base 
+    uppercase font-anko-bold
     rounded shadow;
 
   &.sm {
@@ -107,7 +104,7 @@ export default {
     &:hover {
       @apply bg-white text-blue;
     }
-    &.inverted {
+    &.outline {
       @apply text-blue bg-white;
       &:hover {
         @apply bg-blue text-white;
@@ -120,7 +117,7 @@ export default {
     &:hover {
       @apply bg-white text-orange;
     }
-    &.inverted {
+    &.outline {
       @apply text-orange bg-white;
       &:hover {
         @apply bg-orange text-white;
