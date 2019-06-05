@@ -2,7 +2,7 @@ module.exports = {
   props: {
     styles: {
       required: false,
-      type: Array,
+      type: Array | String,
       default: () => []
     }
   }

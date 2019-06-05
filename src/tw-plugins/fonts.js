@@ -49,6 +49,7 @@ const fontFaceDeclarations = () => {
   return Object.keys(fileExtMap).map(e => ({
     '@font-face': {
       fontFamily: `Anko${e.split('-').pop()}`,
+      fontDisplay: 'auto',
       src: fileExtMap[e]
         .map(x => {
           const url = `url('assets/fonts/${e}.${x}')`;

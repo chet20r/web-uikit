@@ -4,7 +4,8 @@ exports[`Button should render button element by default 1`] = `
 <button
   class="btn primary md"
   type="button"
+  value="Default Button"
 >
-   Button Text 
+   Default Button 
 </button>
 `;

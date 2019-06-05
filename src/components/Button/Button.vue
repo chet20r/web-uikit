@@ -1,9 +1,9 @@
 <template>
   <component
     :is="tag"
-    class="btn"
-    :class="[theme, { outline, rounded, disabled, fullwidth }, size, ...styles]"
-    :type="type"
+    :class="[baseClass, theme, { outline, rounded, disabled, fullwidth }, size, ...styles]"
+    :type="buttonType"
+    :value="inputValue"
     v-bind="$attrs"
     @click="$emit('click', $event)"
   >
@@ -18,12 +18,23 @@ import propMixins from '@/components/mixins/props';
 export default {
   name: 'Button',
   mixins: [propMixins],
+  computed: {
+    baseClass: function() {
+      return this.tag === 'a' ? '' : 'btn';
+    },
+    buttonType: function() {
+      return this.tag === 'a' ? null : 'button';
+    },
+    inputValue: function() {
+      return this.$slots.default[0].text || null;
+    }
+  },
   props: {
     tag: {
       required: false,
       type: String,
       default: 'button',
-      validator: tag => tag.match(/(button|a)/)
+      validator: tag => tag.match(/(button|a|input|nuxt-link)/)
     },
     type: {
       required: false,
